@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
-import { sampleRoutes } from './routes/sample';
+import { routes } from './routes';
 
 const NAMESPACE = 'Server';
 const router = express();
@@ -50,7 +50,7 @@ router.use((req, res, next) => {
 });
 
 /** Routes go here */
-router.use('/api/serverHealthCheck', sampleRoutes);
+router.use('/api', routes);
 
 /** Error handling */
 router.use((req, res, next) => {
