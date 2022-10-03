@@ -4,6 +4,7 @@ import express from 'express';
 import logging from './config/logging';
 import config from './config/config';
 import { routes } from './routes';
+import { connectToDb, disconnectDb } from './db';
 
 const NAMESPACE = 'Server';
 const router = express();
@@ -63,9 +64,10 @@ router.use((req, res, next) => {
 
 const httpServer = http.createServer(router);
 
-httpServer.listen(config.server.port, () =>
+httpServer.listen(config.server.port, () => {
     logging.info(
         NAMESPACE,
         `Server is running ${config.server.hostname}:${config.server.port}`
-    )
-);
+    );
+    connectToDb();
+});

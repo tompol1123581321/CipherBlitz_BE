@@ -1,2 +1,2 @@
-export * from './createGame';
+export * from './gameController';
 export * from './healthCheck';

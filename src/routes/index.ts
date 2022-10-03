@@ -1,9 +1,9 @@
 import express from 'express';
-import { createGameController, serverHealthCheck } from '../controllers';
+import { saveNewGame, serverHealthCheck } from '../controllers';
 
 const router = express.Router();
 
 router.get('/serverHealthCheck', serverHealthCheck);
-router.post('/createGame', createGameController);
+router.post('/gameEditor/createNew', saveNewGame);
 
 export const routes = router;
